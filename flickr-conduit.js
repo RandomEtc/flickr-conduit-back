@@ -165,6 +165,7 @@ Conduit.prototype.listen = function(port) {
     var callback = function () {
         return pushHandler.apply(me, arguments);
     };
-
-    http.createServer(callback).listen(port);
+    var app = http.createServer(callback);
+    app.listen(port);
+    return app;
 }

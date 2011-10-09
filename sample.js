@@ -1,4 +1,4 @@
-var io = require('socket.io').listen(1340)
+var socket = require('socket.io')
     , Conduit = require('./flickr-conduit').Conduit
     , crypto = require('crypto')
 ;
@@ -7,7 +7,15 @@ var conduit = new Conduit();
 conduit.subscribeCallback = function(urlParts) {
     return urlParts.query.verify_token == 'nolans funtime';
 }
-conduit.listen(1338);
+var app = conduit.listen(process.env.PORT || 1338);
+
+var io = socket.listen(app)
+// see http://devcenter.heroku.com/articles/using-socket-io-with-node-js-on-heroku
+// assuming io is the Socket.IO server object
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
 
 io.sockets.on('connection', function(socket) {
     socket.on('subscribe', function(data) {

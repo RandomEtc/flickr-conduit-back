@@ -10,7 +10,8 @@
   },
   "main": "flickr-conduit.js",
   "dependencies": {
-    "xml2js": ">=0.1.9"
+    "xml2js": ">=0.1.9",
+    "socket.io": "~0.8.5"
   },
   "devDependencies": {}
 }
