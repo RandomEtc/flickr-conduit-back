@@ -1,6 +1,6 @@
 ## Description
 
-flickr-conduit is a subsriber endpoint for Flickr's implementation of the PubSubHubbub spec. It handles the the 'subscribe', 'unsubscribe', and the parsing of the XML that Flickr pushes out.
+flickr-conduit is a subscriber endpoint for Flickr's implementation of the PubSubHubbub spec. It handles the the 'subscribe', 'unsubscribe', and the parsing of the XML that Flickr pushes out.
 
 This repository is Nolan's original stripped of the front-end example and modified to work on Heroku. The main change is to return the http server from Conduit.listen so that it can be shared by socket.io because Heroku doesn't support WebSockets yet.
 
